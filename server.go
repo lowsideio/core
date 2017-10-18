@@ -25,7 +25,7 @@ func main() {
   e.Use(middleware.Recover())
 
   e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-    AllowOrigins: []string{"http://localhost:3000"},
+    AllowOrigins: []string{"http://localhost:8080"},
     AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE, echo.OPTIONS},
   }))
 
@@ -48,6 +48,9 @@ func main() {
   e.GET("/motorcycles", handlers.GetMotorcycles)
   e.POST("/motorcycles", handlers.PostMotorcycles)
   e.OPTIONS("/motorcycles", handlers.MotorcyclesOptions)
+
+  e.GET("/search/:text", handlers.GetSearch)
+
 
   e.Logger.Fatal(e.Start(":1323"))
 }
