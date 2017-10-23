@@ -1,0 +1,2 @@
+docker exec -i core_database_1 su postgres -c 'psql -P format=unaligned -P tuples_only -P fieldsep=\, -c "SELECT distinct on (model) brand, model FROM motorcycles"' > lowside-io-motorcycles-models-github.csv
+docker exec -i core_database_1 su postgres -c 'psql -P format=unaligned -P tuples_only -P fieldsep=\, -c "SELECT brand, COUNT(model) FROM motorcycles GROUP BY 1"' > lowside-io-brands-github.csv
