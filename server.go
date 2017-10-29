@@ -24,10 +24,10 @@ func main() {
   e.Use(middleware.Logger())
   e.Use(middleware.Recover())
 
-  // e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-  //   AllowOrigins: []string{"http://localhost:8080"},
-  //   AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE, echo.OPTIONS},
-  // }))
+  e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+    AllowOrigins: []string{"https://lowside.io"},
+    AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE, echo.OPTIONS},
+  }))
 
   e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
     return func(c echo.Context) error {
