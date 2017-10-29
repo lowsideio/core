@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"os"
 	models "../models"
 
 	"github.com/labstack/echo"
@@ -15,7 +16,7 @@ type DatabaseContext struct {
 
 func Init() {
   var err error
-  db, err = gorm.Open("postgres", "host=localhost user=postgres DB.name=lowside sslmode=disable password=123456")
+  db, err = gorm.Open("postgres", "host=database user=postgres DB.name=lowside sslmode=disable password=" + os.Getenv("DATABASE_PASSWORD"));
 
   if err != nil {
     panic("failed to connect database")

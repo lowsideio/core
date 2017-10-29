@@ -13,7 +13,7 @@ type Motorcycle struct {
   ID                    uuid.UUID   `gorm:"primary_key;type:uuid;default:uuid_generate_v4()" json:"id" string:"id" form:"id" query:"id"`
 
   Brand                 string      `json:"brand" string:"brand" form:"brand" query:"brand"`
-  BikeModel             string      `json:"model" string:"model" form:"model" query:"model"`
+  Model                 string      `json:"model" string:"model" form:"model" query:"model"`
   Year                  string      `json:"year" string:"year" form:"year" query:"year"`
   Category              string      `json:"category" string:"category" form:"category" query:"category"`
   Cc                    string      `json:"cc" string:"cc" form:"cc" query:"cc"`
