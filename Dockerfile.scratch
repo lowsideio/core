@@ -1,0 +1,3 @@
+FROM scratch
+ADD core-api /
+CMD ["/core-api"]
