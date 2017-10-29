@@ -1,21 +1,20 @@
-# core
-lowside.io API
+<img src="https://github.com/lowsideio/graphic-chart/raw/master/logo-png/lowside-logo-red.png" alt="logo-lowside-red" width="25%" align="right" />
 
+# core API of lowside.io
 
-# CRUD
+Behind the scenes.
 
-*CREATE*
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
 
-POST @ `/motorcycles/:id`
+# Routes
 
-*READ*
-
-- LIST
-GET_MANY: GET @ `/motorcycles`
-GET_ONE: GET @ `/motorcycles/:id`
-
-*UPDATE*
-PUT @ `/motorcycles/:id`
-
-*DELETE*
-DELETE @ `/motorcycles/:id`
+`
+GET /motorcycles/:id
+GET /motorcycles
+GET /search/:query
+`
