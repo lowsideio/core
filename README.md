@@ -13,8 +13,8 @@ Behind the scenes.
 
 # Routes
 
-`
+```
 GET /motorcycles/:id
 GET /motorcycles
 GET /search/:query
-`
+```
