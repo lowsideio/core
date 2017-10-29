@@ -15,7 +15,7 @@ type DatabaseContext struct {
 
 func Init() {
   var err error
-  db, err = gorm.Open("postgres", "host=localhost user=postgres DB.name=lowside sslmode=disable password=123456")
+  db, err = gorm.Open("postgres", "host=database user=postgres DB.name=lowside sslmode=disable password=123456")
 
   if err != nil {
     panic("failed to connect database")
