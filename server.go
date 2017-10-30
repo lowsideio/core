@@ -47,7 +47,7 @@ func main() {
   e.DELETE("/motorcycles/:id", handlers.DeleteMotorcycle)
   e.OPTIONS("/motorcycles/:id", handlers.MotorcyclesOptions)
 
-  e.GET("/motorcycles", handlers.GetMotorcycles)
+  // e.GET("/motorcycles", handlers.GetMotorcycles)
   e.POST("/motorcycles", handlers.PostMotorcycles)
   e.OPTIONS("/motorcycles", handlers.MotorcyclesOptions)
 
