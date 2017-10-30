@@ -1,6 +1,8 @@
 package main
 
 import (
+  "os"
+
   handlers "./handlers"
   utils "./utils"
 
@@ -25,7 +27,7 @@ func main() {
   e.Use(middleware.Recover())
 
   e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-    AllowOrigins: []string{"https://lowside.io"},
+    AllowOrigins: []string{os.Getenv("CORS_URL")},
     AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE, echo.OPTIONS},
   }))
 
