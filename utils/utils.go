@@ -20,7 +20,7 @@ func Init() {
 		"postgres",
 		"host=" + os.Getenv("DATABASE_HOST") +
 		" user=" + os.Getenv("DATABASE_USER") +
-		" DB.name=" + os.Getenv("DATABASE_NAME") +
+		" dbname=" + os.Getenv("DATABASE_NAME") +
 		" sslmode=disable" +
 		" password=" + os.Getenv("DATABASE_PASSWORD"));
 
