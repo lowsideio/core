@@ -12,8 +12,6 @@ import (
 type Motorcycle struct {
   ID                    uuid.UUID   `gorm:"primary_key;type:uuid;default:uuid_generate_v4()" json:"id" string:"id" form:"id" query:"id"`
 
-  Brand                 string      `json:"brand,omitempty" string:"brand" form:"brand" query:"brand"`
-  Model                 string      `json:"model,omitempty" string:"model" form:"model" query:"model"`
   Year                  string      `json:"year,omitempty" string:"year" form:"year" query:"year"`
   Category              string      `json:"category,omitempty" string:"category" form:"category" query:"category"`
   Cc                    string      `json:"cc,omitempty" string:"cc" form:"cc" query:"cc"`
@@ -53,9 +51,16 @@ type Motorcycle struct {
   FuelCapacity          string      `json:"fuelCapacity,omitempty" string:"fuelCapacity" form:"fuelCapacity" query:"fuelCapacity"`
   Starter               string      `json:"starter,omitempty" string:"starter" form:"starter" query:"starter"`
 
+  MotorcycleModelId       uuid.UUID   `gorm:"foreign_key;type:uuid()" json:"motorcycles_models_id" string:"motorcycles_models_id" form:"motorcycles_models_id" query:"motorcycles_models_id"`
+
+
   CreatedAt             time.Time   `json:"createdAt,omitempty" string:"createdAt" form:"createdAt" query:"createdAt"`
   UpdatedAt             time.Time   `json:"updatedAt,omitempty" string:"updatedAt" form:"updatedAt" query:"updatedAt"`
   DeletedAt             time.Time   `gorm:"default:null" json:"deletedAt" string:"deletedAt" form:"deletedAt" query:"deletedAt"`
 
   Price uint `json:"price,omitempty" string:"price" form:"price" query:"price"`
+}
+
+func (m Motorcycle) TableName() string {
+  return "motorcycles_specs";
 }
