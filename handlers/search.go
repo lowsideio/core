@@ -19,7 +19,7 @@ func GetSearch(c echo.Context) error {
 	text := c.Param("text")
 
   // not safe and way to heavy
-  if err := dc.Db().Where("model ILIKE ?", fmt.Sprintf("%%%s%%", text)).Limit(25).Find(&motorcycles).Error; err != nil {
+  if err := dc.Db().Select("brand, model, power, cc, category").Where("model ILIKE ?", fmt.Sprintf("%%%s%%", text)).Limit(25).Find(&motorcycles).Error; err != nil {
     return c.JSON(500, err)
   }
 
