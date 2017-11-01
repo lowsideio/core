@@ -52,6 +52,7 @@ func main() {
   e.OPTIONS("/motorcycles", handlers.MotorcyclesOptions)
 
   e.GET("/search/:text", handlers.GetSearch)
+  e.GET("/search-algolia/:text", handlers.GetSearchAlgolia)
 
 
   e.Logger.Fatal(e.Start(":1323"))
