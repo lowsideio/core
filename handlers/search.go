@@ -1,7 +1,6 @@
 package handlers
 
 import (
-  "os"
   "fmt"
   utils "../utils"
   models "../models"
@@ -9,7 +8,6 @@ import (
   "net/http"
 
   "github.com/labstack/echo"
-  "github.com/algolia/algoliasearch-client-go/algoliasearch"
 )
 
 /* GET /search/:query */
@@ -20,7 +18,7 @@ func GetSearch(c echo.Context) error {
 
   text := c.Param("text")
 
-  // not safe and way to heavy
+  // not safe and way too heavy
   if err := dc.Db().Where("model ILIKE ?", fmt.Sprintf("%%%s%%", text)).Limit(25).Find(&motorcycles).Error; err != nil {
     return c.JSON(500, err)
   }
@@ -28,13 +26,13 @@ func GetSearch(c echo.Context) error {
 	return c.JSON(http.StatusOK, motorcycles)
 }
 
+/* GET /search-algolia/:text */
 func GetSearchAlgolia(c echo.Context) error {
-  client := algoliasearch.NewClient(os.Getenv("ALGOLIA_CLIENT_ID"), os.Getenv("ALGOLIA_SECRET_API_KEY"))
-  index := client.InitIndex("motorcycles")
+  ac := c.(*utils.AlgoliaContext)
 
   text := c.Param("text")
 
-  res, err := index.Search(text, nil)
+  res, err := ac.AlgoliaIndex().Search(text, nil)
 
   if err != nil {
     return c.JSON(500, err)
