@@ -14,6 +14,7 @@ import (
 
 func init() {
   utils.Init()
+  utils.InitSearch()
 }
 
 func main() {
@@ -38,6 +39,13 @@ func main() {
     }
   })
 
+  e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
+    return func(c echo.Context) error {
+      cc := &utils.AlgoliaContext{c}
+      return h(cc)
+    }
+  })
+
   e.GET("/", func(c echo.Context) error {
     return c.String(http.StatusOK, "Hello, World!")
   })
@@ -52,6 +60,7 @@ func main() {
   e.OPTIONS("/motorcycles", handlers.MotorcyclesOptions)
 
   e.GET("/search/:text", handlers.GetSearch)
+  e.GET("/search-algolia/:text", handlers.GetSearchAlgolia)
 
 
   e.Logger.Fatal(e.Start(":1323"))

@@ -19,7 +19,7 @@ RUN go get github.com/labstack/echo
 RUN go get github.com/satori/go.uuid
 RUN go get github.com/lib/pq
 RUN go get github.com/dgrijalva/jwt-go
-
+RUN go get github.com/algolia/algoliasearch-client-go/algoliasearch
 RUN go build -o core .
 
 EXPOSE 1323
