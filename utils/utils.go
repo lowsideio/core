@@ -35,6 +35,7 @@ func Init() {
 
   // Migrate the schema
   db.AutoMigrate(&models.Motorcycle{})
+  db.AutoMigrate(&models.MotorcycleModel{})
 
   // defer db.Close()
 }
