@@ -17,4 +17,5 @@ Behind the scenes.
 GET /motorcycles/:id
 GET /motorcycles
 GET /search/:query
+GET /search-algolia/:query
 ```
