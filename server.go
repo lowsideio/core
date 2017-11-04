@@ -43,6 +43,9 @@ func main() {
     return c.String(http.StatusOK, "Hello, World!")
   })
 
+  e.GET("/motorcycles/slug/:slug", handlers.GetMotorcycleByslug)
+  e.GET("/motorcycles-specs/:id", handlers.GetMotorcycleSpecsByModelId)
+
   e.GET("/motorcycles/:id", handlers.GetMotorcycle)
   e.PUT("/motorcycles/:id", handlers.PutMotorcycle)
   e.DELETE("/motorcycles/:id", handlers.DeleteMotorcycle)
