@@ -10,7 +10,7 @@ import (
 
 var db *gorm.DB
 
-type DatabaseContext struct {
+type RequestContext struct {
 	echo.Context
 }
 
@@ -40,6 +40,6 @@ func Init() {
   // defer db.Close()
 }
 
-func (c *DatabaseContext) Db() *gorm.DB {
+func (c *RequestContext) Db() *gorm.DB {
   return db
 }

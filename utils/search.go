@@ -3,7 +3,6 @@ package utils
 import (
   "os"
 
-  "github.com/labstack/echo"
   "github.com/algolia/algoliasearch-client-go/algoliasearch"
 )
 
@@ -16,9 +15,6 @@ func InitSearch() {
 }
 
 
-type AlgoliaContext struct {
-  echo.Context
-}
-func (c *AlgoliaContext) AlgoliaIndex() algoliasearch.Index {
+func (c *RequestContext) AlgoliaIndex() algoliasearch.Index {
   return index
 }

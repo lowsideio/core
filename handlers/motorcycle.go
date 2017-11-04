@@ -12,7 +12,7 @@ import (
 )
 
 func GetMotorcycle(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycle models.Motorcycle
 
@@ -26,7 +26,7 @@ func GetMotorcycle(c echo.Context) error {
 }
 
 func GetMotorcycles(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycles []models.Motorcycle
   var count int64
@@ -48,7 +48,7 @@ func GetMotorcycles(c echo.Context) error {
 }
 
 func PutMotorcycle(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   m := &models.Motorcycle{}
   newVersion := &models.Motorcycle{}
@@ -66,7 +66,7 @@ func PutMotorcycle(c echo.Context) error {
 
 
 func PostMotorcycles(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
   m := &models.Motorcycle{}
 
   if err := c.Bind(m); err != nil {
@@ -80,7 +80,7 @@ func PostMotorcycles(c echo.Context) error {
 
 
 func DeleteMotorcycle(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycle models.Motorcycle
 
