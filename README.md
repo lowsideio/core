@@ -18,4 +18,6 @@ GET /motorcycles/:id
 GET /motorcycles
 GET /search/:query
 GET /search-algolia/:query
+GET /motorcycles/slug/:slug
+GET /motorcycles-specs/:id
 ```
