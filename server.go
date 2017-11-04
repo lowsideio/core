@@ -34,14 +34,7 @@ func main() {
 
   e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
     return func(c echo.Context) error {
-      cc := &utils.DatabaseContext{c}
-      return h(cc)
-    }
-  })
-
-  e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
-    return func(c echo.Context) error {
-      cc := &utils.AlgoliaContext{c}
+      cc := &utils.RequestContext{c}
       return h(cc)
     }
   })
@@ -49,6 +42,9 @@ func main() {
   e.GET("/", func(c echo.Context) error {
     return c.String(http.StatusOK, "Hello, World!")
   })
+
+  e.GET("/motorcycles/slug/:slug", handlers.GetMotorcycleByslug)
+  e.GET("/motorcycles-specs/:id", handlers.GetMotorcycleSpecsByModelId)
 
   e.GET("/motorcycles/:id", handlers.GetMotorcycle)
   e.PUT("/motorcycles/:id", handlers.PutMotorcycle)

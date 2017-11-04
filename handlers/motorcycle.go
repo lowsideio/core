@@ -11,8 +11,37 @@ import (
 	"github.com/labstack/echo"
 )
 
+func GetMotorcycleByslug(c echo.Context) error {
+  dc := c.(*utils.RequestContext)
+
+  var motorcycle models.MotorcycleModel
+
+  slug := c.Param("slug")
+
+  if err := dc.Db().Table("motorcycles_models").Where("slug = ?", slug).First(&motorcycle).Error; err != nil {
+    return c.JSON(404, err)
+  }
+
+  return c.JSON(http.StatusOK, motorcycle)
+}
+
+func GetMotorcycleSpecsByModelId(c echo.Context) error {
+  dc := c.(*utils.RequestContext)
+
+  var motorcycles []models.Motorcycle
+
+  id := c.Param("id")
+
+  if err := dc.Db().Table("motorcycles_specs").Where("motorcycle_model_id = ?", id).Find(&motorcycles).Error; err != nil {
+    return c.JSON(404, err)
+  }
+
+  return c.JSON(http.StatusOK, motorcycles)
+}
+
+
 func GetMotorcycle(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycle models.Motorcycle
 
@@ -26,7 +55,7 @@ func GetMotorcycle(c echo.Context) error {
 }
 
 func GetMotorcycles(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycles []models.Motorcycle
   var count int64
@@ -48,7 +77,7 @@ func GetMotorcycles(c echo.Context) error {
 }
 
 func PutMotorcycle(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   m := &models.Motorcycle{}
   newVersion := &models.Motorcycle{}
@@ -66,7 +95,7 @@ func PutMotorcycle(c echo.Context) error {
 
 
 func PostMotorcycles(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
   m := &models.Motorcycle{}
 
   if err := c.Bind(m); err != nil {
@@ -80,7 +109,7 @@ func PostMotorcycles(c echo.Context) error {
 
 
 func DeleteMotorcycle(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycle models.Motorcycle
 
