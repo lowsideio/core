@@ -12,7 +12,7 @@ import (
 
 /* GET /search/:query */
 func GetSearch(c echo.Context) error {
-  dc := c.(*utils.DatabaseContext)
+  dc := c.(*utils.RequestContext)
 
   var motorcycles []models.MotorcycleModel
 
@@ -28,7 +28,7 @@ func GetSearch(c echo.Context) error {
 
 /* GET /search-algolia/:text */
 func GetSearchAlgolia(c echo.Context) error {
-  ac := c.(*utils.AlgoliaContext)
+  ac := c.(*utils.RequestContext)
 
   text := c.Param("text")
 

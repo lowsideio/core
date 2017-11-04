@@ -34,14 +34,7 @@ func main() {
 
   e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
     return func(c echo.Context) error {
-      cc := &utils.DatabaseContext{c}
-      return h(cc)
-    }
-  })
-
-  e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
-    return func(c echo.Context) error {
-      cc := &utils.AlgoliaContext{c}
+      cc := &utils.RequestContext{c}
       return h(cc)
     }
   })
