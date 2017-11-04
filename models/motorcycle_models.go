@@ -16,6 +16,8 @@ type MotorcycleModel struct {
   Model                 string      `json:"model,omitempty" string:"model" form:"model" query:"model"`
   Category              string      `json:"category,omitempty" string:"category" form:"category" query:"category"`
 
+  Slug                   string      `json:"slug,omitempty" string:"category" form:"slug" query:"slug"`
+
   CreatedAt             time.Time   `json:"createdAt,omitempty" string:"createdAt" form:"createdAt" query:"createdAt"`
   UpdatedAt             time.Time   `json:"updatedAt,omitempty" string:"updatedAt" form:"updatedAt" query:"updatedAt"`
   DeletedAt             time.Time   `gorm:"default:null" json:"deletedAt" string:"deletedAt" form:"deletedAt" query:"deletedAt"`
