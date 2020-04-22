@@ -1,16 +1,23 @@
-version: '2'
+version: "2"
 services:
-  database:
-    image: "postgres:9.6"
-    environment:
-     POSTGRES_PASSWORD: 123456
-     POSTGRES_USER: postgres
-    ports:
-      - "5432:5432"
-
-  pgadmin:
-      image: "fenglc/pgadmin4"
-      links:
-        - "database:postgres"
-      ports:
-        - "5050:5050"
+    database:
+        image: "postgres:9.6"
+        environment:
+            POSTGRES_PASSWORD: 123456
+            POSTGRES_USER: postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - /tmp/db_backup:/tmp/db_backup
+    adminer:
+        image: adminer
+        links:
+            - "database:postgres"
+        ports:
+            - 8080:8080
+    pgadmin:
+        image: "fenglc/pgadmin4"
+        links:
+            - "database:postgres"
+        ports:
+            - "5050:5050"

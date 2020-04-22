@@ -1,20 +1,20 @@
 package utils
 
 import (
-  "os"
+	"os"
 
-  "github.com/algolia/algoliasearch-client-go/algoliasearch"
+	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 )
 
-var client algoliasearch.Client;
-var index algoliasearch.Index;
+var client *search.Client
+
+var index *search.Index
 
 func InitSearch() {
-  client = algoliasearch.NewClient(os.Getenv("ALGOLIA_CLIENT_ID"), os.Getenv("ALGOLIA_SECRET_API_KEY"))
-  index = client.InitIndex("motorcycles")
+	client = search.NewClient(os.Getenv("ALGOLIA_APP_ID"), os.Getenv("ALGOLIA_API_KEY"))
+	index = client.InitIndex("motorcycles")
 }
 
-
-func (c *RequestContext) AlgoliaIndex() algoliasearch.Index {
-  return index
+func (c *RequestContext) AlgoliaIndex() *search.Index {
+	return index
 }
