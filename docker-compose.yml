@@ -15,9 +15,3 @@ services:
             - "database:postgres"
         ports:
             - 8080:8080
-    pgadmin:
-        image: "fenglc/pgadmin4"
-        links:
-            - "database:postgres"
-        ports:
-            - "5050:5050"
